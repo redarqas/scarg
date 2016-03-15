@@ -1,6 +1,8 @@
 package de.downgra.scarg
 
 import collection.mutable.ListBuffer
+import scala.language.implicitConversions
+
 
 /** trait holding builders to define argument definitions.
  *
@@ -24,7 +26,7 @@ trait ArgumentBuilders {
    *   |>   -> the key
    *   |*>  -> repeated positional key
    */
-  class PositionalBuilder private[ArgumentBuilders] (_name: String) extends NotNull {
+  class PositionalBuilder private[ArgumentBuilders] (_name: String)  {
     var _description = ""
     var _optional = false
 
@@ -80,7 +82,7 @@ trait ArgumentBuilders {
    *   |%  -> the description, optional
    *   |>  -> the key
    */
-  class OptionalBuilder private[ArgumentBuilders] (_name: String) extends NotNull {
+  class OptionalBuilder private[ArgumentBuilders] (_name: String)  {
     val _names = ListBuffer(_name)
     var _description = ""
     var _valueName: Option[String] = None
@@ -137,7 +139,7 @@ trait ArgumentBuilders {
    *   ("=" >>>> 60)
    *
    */
-  class SeparatorBuilder private[ArgumentBuilders] (description: String) extends NotNull {
+  class SeparatorBuilder private[ArgumentBuilders] (description: String) {
     def >>> {
       self.addArgument(Separator(description))
     }

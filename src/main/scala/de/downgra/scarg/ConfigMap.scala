@@ -26,6 +26,8 @@ package object scarg {
    * @author Rico Schiekel
    */
   abstract class ConfigMap(protected val vmap: ValueMap) extends Readers {
+    import scala.language.implicitConversions
+
     def get[T : Reader](name: String): Option[T] = vmap get name map(_.head) map(implicitly[Reader[T]].read)
     def get[T : Reader](name: String, default: T): T = get[T](name) getOrElse (default)
 

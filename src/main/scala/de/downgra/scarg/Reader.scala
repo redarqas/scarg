@@ -15,7 +15,7 @@ trait Readers {
     def read(value: String): Int = try {
       value.toInt
     } catch {
-      case e => throw new IllegalArgumentException("Expect a string I can interpret as an integer", e)
+      case e: Throwable => throw new IllegalArgumentException("Expect a string I can interpret as an integer", e)
     }
   }
 
@@ -23,7 +23,7 @@ trait Readers {
     def read(value: String): Double = try {
       value.toDouble
     } catch {
-      case e => throw new IllegalArgumentException("Expect a string I can interpret as an double", e)
+      case e: Throwable => throw new IllegalArgumentException("Expect a string I can interpret as an double", e)
     }
   }
 

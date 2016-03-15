@@ -2,6 +2,7 @@ package de.downgra.scarg
 
 import collection.mutable.{Buffer, ListBuffer, Stack => MStack}
 import annotation.tailrec
+import scala.language.implicitConversions
 
 /** Exception if an argument is specified twice */
 class DoubleArgumentException(val message: String) extends RuntimeException(message)
